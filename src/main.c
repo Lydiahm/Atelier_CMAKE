@@ -3,15 +3,15 @@
 #include <string.h>
 #include "./../include/calculator.h"
 
-int main(int argc, char argv[]){
-    if (argc == 4 || argc == 3)
-    {
-        char op = argv[1];
+int main(int argc, char *argv[]){
+    if (argc == 4 || argc == 3) {
+        char *op = argv[1];
         double r = 0;
 
         if (strcmp(op, "car") == 0 && argc == 3) {
-            r = _car(atof(argv[2]));
-            printf("%lf", r);
+            int x = atoi(argv[2]);
+            int r_int = car(x);
+            printf("%d\n", r_int);
         }
         else if (argc == 4) {
             char* a = argv[2];
@@ -19,30 +19,30 @@ int main(int argc, char argv[]){
 
             if (strcmp(op, "add") == 0) {
                 r = _add(atof(a), atof(b));
-                printf("%lf",r);
+                printf("%lf\n", r);
             }
             else if (strcmp(op, "sub") == 0) {
                 r = _sub(atof(a), atof(b));
-                printf("%lf",r);
+                printf("%lf\n", r);
             }
             else if (strcmp(op, "mul") == 0) {
                 r = _mul(atof(a), atof(b));
-                printf("%lf",r);
+                printf("%lf\n", r);
             }
             else if (strcmp(op, "div") == 0) {
                 r = _div(atof(a), atof(b));
-                printf("%lf",r);
+                printf("%lf\n", r);
             }
             else {
-                printf("Erreur de parametres");
+                printf("Erreur de parametres\n");
             }
         }
         else {
-            printf("Erreur de parametres");
+            printf("Erreur de parametres\n");
         }
     }
     else {
-        printf("Erreur de parametres");
+        printf("Erreur de parametres\n");
     }
     return 0;
 }
