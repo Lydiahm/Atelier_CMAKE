@@ -45,5 +45,3 @@ int main(int argc, char *argv[]){
 		printf("Erreur de parametres");
 	}
 	return 0;
-}
-
