@@ -1,15 +1,5 @@
-#ifndef CALCULATOR_H
-#define CALCULATOR_H
-
 double _add(double a, double b);
 double _sub(double a, double b);
 double _mul(double a, double b);
 double _div(double a, double b);
-double car(double x);
-
-#endif
-
-
-
-
-
+double _car(double a); // fonction pour élever au carré
