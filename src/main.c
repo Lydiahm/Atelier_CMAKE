@@ -1,3 +1,7 @@
+#include <stdio.h>    // pour printf
+#include <stdlib.h>   // pour atof
+#include <string.h>   // pour strcmp
+
 int main(int argc, char *argv[]){
 	if (argc == 4 || argc == 3)
 	{
