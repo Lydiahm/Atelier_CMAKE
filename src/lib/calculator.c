@@ -17,5 +17,5 @@ double _div(double a, double b) {
 }
 
 int _car(int a) {
-    return a a;
+	return a * a;
 }
