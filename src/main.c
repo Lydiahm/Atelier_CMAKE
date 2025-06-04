@@ -4,12 +4,11 @@
 #include "./../include/calculator.h"
 
 int main(int argc, char *argv[]) {
-    double r = 0;
-
     if (argc == 4) {
         char* op = argv[1];
         char* a = argv[2];
         char* b = argv[3];
+        double r = 0;
 
         if (strcmp(op, "add") == 0) {
             r = _add(atof(a), atof(b));
@@ -26,19 +25,10 @@ int main(int argc, char *argv[]) {
         } else {
             printf("Erreur de parametres");
         }
-    }
-    else if (argc == 3) {
-        char* op = argv[1];
-        char* a = argv[2];
-
-        if (strcmp(op, "car") == 0) {
-            r = _car(atof(a));
-            printf("%lf", r);
-        } else {
-            printf("Erreur de parametres");
-        }
-    }
-    else {
+    } else if (argc == 3 && strcmp(argv[1], "car") == 0) {
+        double r = _car(atof(argv[2]));
+        printf("%lf", r);
+    } else {
         printf("Erreur de parametres");
     }
 
