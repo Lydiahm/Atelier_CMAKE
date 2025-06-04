@@ -1,16 +1,109 @@
 name: Automatisation des tests
 on: push
+
 jobs:
   Compilation:
     runs-on: ubuntu-latest
     steps:
-      - name: Compilation
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build and compile
         run: |
-          last_directory=$(basename ${{ runner.workspace }})
-          git clone https://github.com/${{ github.repository }}.git
-          cd ./$last_directory
           mkdir build
           cd build
           cmake ..
           make
-          make test
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: build/
+
+  Test_Add:
+    runs-on: ubuntu-latest
+    needs: Compilation
+    steps:
+      - name: Download build
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: build
+
+      - name: Run Add Test
+        run: |
+          chmod +x build/src/calculator
+          ./build/src/calculator add 10 5
+
+  Test_Sub:
+    runs-on: ubuntu-latest
+    needs: Compilation
+    steps:
+      - name: Download build
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: build
+
+      - name: Run Sub Test
+        run: |
+          chmod +x build/src/calculator
+          ./build/src/calculator sub 10 5
+
+  Test_Mul:
+    runs-on: ubuntu-latest
+    needs: Compilation
+    steps:
+      - name: Download build
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: build
+
+      - name: Run Mul Test
+        run: |
+          chmod +x build/src/calculator
+          ./build/src/calculator mul 10 5
+
+  Test_Div:
+    runs-on: ubuntu-latest
+    needs: Compilation
+    steps:
+      - name: Download build
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: build
+
+      - name: Run Div Test
+        run: |
+          chmod +x build/src/calculator
+          ./build/src/calculator div 10 5
+
+  Test_Car:
+    runs-on: ubuntu-latest
+    needs: Compilation
+    steps:
+      - name: Download build
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: build
+
+      - name: Run Car Test
+        run: |
+          chmod +x build/src/calculator
+          ./build/src/calculator car 5
+
+  Deployment:
+    runs-on: ubuntu-latest
+    needs: 
+      - Test_Add
+      - Test_Sub
+      - Test_Mul
+      - Test_Div
+      - Test_Car
+    steps:
+      - name: Deploy
+        run: echo "Déploiement de la solution"
