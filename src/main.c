@@ -3,19 +3,19 @@
 #include <string.h>
 #include "./../include/calculator.h"
 
-int main(int argc, char *argv[]){
-    if (argc == 4 || argc == 3) {
+int main(int argc, char *argv[]) {
+    if (argc == 3 || argc == 4) {
         char *op = argv[1];
         double r = 0;
 
         if (strcmp(op, "car") == 0 && argc == 3) {
-            int x = atoi(argv[2]);
-            int r_int = car(x);
-            printf("%d\n", r_int);
+            double x = atof(argv[2]);
+            r = _car(x);
+            printf("%lf\n", r);
         }
         else if (argc == 4) {
-            char* a = argv[2];
-            char* b = argv[3];
+            char *a = argv[2];
+            char *b = argv[3];
 
             if (strcmp(op, "add") == 0) {
                 r = _add(atof(a), atof(b));
